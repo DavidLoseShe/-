@@ -1,0 +1,44 @@
+<!--pages/manage/manage.wxml-->
+<view class="container">
+  <!-- 用户登录测试 -->
+  <view class="userinfo" bindtap="login">
+    <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}" background-size="cover"></image>
+    <view>
+      <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击登录'}}</text>
+      <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+    </view>
+  </view>
+
+  <view class="tunnel">
+    <view class="tunnel-text " bindtap="shareWifi">
+      <image src='share.png' class='img'></image>
+      <text>分享wifi</text>
+    </view>
+  </view>
+
+  <view class="tunnel">
+    <view class="tunnel-text uploader-text" bindtap="queryOwnWifi">
+      <image src='manage.png' class='img'></image>
+      <text>管理wifi</text>
+    </view>
+    <view wx:if="{{manageWifi}}">
+      <view class='list'>wifi列表:
+      </view>
+      <view class="tunnel-text" wx:for="{{ownWifiList}}">
+        <text class="request-text">{{item.wifiSsid}}</text>
+        <switch checked="{{item.wifiState=='true'?1:0}}" id="{{index}}" disabled="{{manageOperating}}" bindchange="updateWifiShareState" color='#a5f' />
+        <text decode="{{true}}" space="{{true}}">{{item.wifiState=='true'?'&nbsp;&nbsp;&nbsp;':'不'}}分享</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="tunnel">
+    <view class="tunnel-text uploader-text" bindtap="linkWe">
+      <image src='link.png' class='img'></image>
+      <text>联系我们</text>
+    </view>
+  </view>
+
+
+</view>

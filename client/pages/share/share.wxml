@@ -1,0 +1,40 @@
+<!--pages/share/share.wxml-->
+<view class='container'>
+  <image src='cold.png' class='cold1'></image>
+  <image src='cold.png' class='cold2'></image>
+  <image src='cold.png' class='cold3'></image>
+  <image src='cold.png' class='cold4'></image>
+  <image src='cold.png' class='cold5'></image>
+  <view class='userinfo'>
+    <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : '../manage/user-unlogin.png'}}" background-size="cover"></image>
+
+  </view>
+  <text class="userinfo_name">{{logged ? userInfo.nickName : '未登录'}}</text>
+  <view>
+    <text>WIFI分享</text>
+  </view>
+  <view style='width:100%;'>
+    <form bindsubmit="formSubmit">
+      <view class="section">
+        <view class="section__title">wifi名称</view>
+        <input class='section_input' id="wifiSSID" bindblur="ssidBlur" value='{{wifiSSID}}' placeholder="wifi   name" />
+      </view>
+      <view class="section">
+        <view class="section__title">wifi密码</view>
+        <input class='section_input' id="wifiPassword" bindblur="passBlur" value='{{wifiPassword}}'  type='password' placeholder="wifi    password" />
+      </view>
+      <view class='sw'>
+        <view class="switch">
+          <view class="switch_title">分享</view>
+          <view class="switch_input">
+            <switch checked id='wifiShare' bindchange="shareBlur" color='#a5f' />
+          </view>
+        </view>
+      </view>
+      <view>
+        <button class='button' hover-class='btnhover' bindtap='connetShare'>连接</button>
+      </view>
+
+    </form>
+  </view>
+</view>

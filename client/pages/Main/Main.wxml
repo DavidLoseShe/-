@@ -1,0 +1,33 @@
+<!--pages/Main/Main.wxml-->
+<view class="">
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+    <block wx:for="{{imgUrls}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item.url}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='container'>
+
+
+    <view wx:if='{{wifiOpen}}' class='oneLine'>
+      <icon type="warn" size="40" style='padding-right:20rpx' />
+      <text class='wifiClose'> wifi未连接</text>
+    </view>
+    <view wx:if='{{!wifiOpen}}' class='oneLine'>
+      <icon type="success_no_circle" size="50" />
+      <text class='wifiOpen'>  wifi已连接</text>
+    </view>
+    <text class=''>wifi名称：{{wifiSSID}}</text>
+    <text class=''>信号强度：{{wifiStrength}}</text>
+    <canvas class='canvas' canvas-id="wifiCanvas" bindtap='wifiIcon' />
+  </view>
+  <button class='btng' hover-class='btnhover' disabled='{{btnState}}' bindtap='connectWifi'>{{wifiButton}}</button>
+  <view class='foot' wx:if='{{wifiOpen}}'>
+    <text>提示：请确保您已打开手机wifi功能</text>
+  </view>
+  <!-- <view class='foot'>
+        <text>联系开发者</text>
+        <text>电话：15684169542</text>
+     </view> -->
+</view>
